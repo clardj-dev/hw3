@@ -10,7 +10,7 @@ class PlacesController < ApplicationController
     # find a Place
     @place = Place.find_by({ "id" => params["id"] })
     # find Entry for the Place
-    @entries = Entry.where({ "entry_id" => @entry["id"] })
+    @entries = Entry.where({ "place_id" => @place["id"] })
     # render places/show view with details about Place
   end
 

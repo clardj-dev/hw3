@@ -2,16 +2,18 @@ class EntriesController < ApplicationController
 
   def index
     # redirect user
-    redirect_to "/entries"
+    @entry = Entry.find_by({ id: params[:id] })
+    redirect_to "/places/#{@entry.place_id}"
   end
   
   def show
     # redirect user
-    redirect_to "/entries"
+    @entry = Entry.find_by({ id: params[:id] })
+    redirect_to "/places/#{@entry.place_id}"
   end
 
   def new
-    # render view with new Entry form
+    @place = Place.find_by({ id: params[:place_id] })
   end
 
   def create
@@ -19,28 +21,35 @@ class EntriesController < ApplicationController
     @entry = Entry.new
 
     # assign user-entered form data to Entry's columns
-    @entry["name"] = params["name"]
+    @entry["title"] = params["title"]
+    @entry["description"] = params["description"]
+    @entry["occurred_on"] = params["occurred_on"]
+
+    @entry["place_id"] = params["place_id"]
 
     # save Entry row
     @entry.save
 
     # redirect user
-    redirect_to "/entries"
+    redirect_to "/places/#{@entry["place_id"]}"
   end
 
   def edit
     # redirect user
-    redirect_to "/entries"
+    @entry = Entry.find_by({ id: params[:id] })
+    redirect_to "/places/#{@entry.place_id}"
   end
 
   def update
     # redirect user
-    redirect_to "/entries"
+    @entry = Entry.find_by({ id: params[:id] })
+    redirect_to "/places/#{@entry.place_id}"
   end
 
   def destroy
     # redirect user
-    redirect_to "/entries"
+    @entry = Entry.find_by({ id: params[:id] })
+    redirect_to "/places/#{@entry.place_id}"
   end
 
 end

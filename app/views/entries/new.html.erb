@@ -1,0 +1,19 @@
+<h1>New Entry</h1>
+
+<form action="/places/<%= @place.id %>/entries" method="post">
+  <p>
+    <label for="title">Name</label>
+    <input type="text" name="title">
+  </p>
+
+  <p>
+    <label for="description">Description</label>
+    <input type="text" name="description">
+  </p>
+
+  <p>
+    <label for="occurred_on">Posted On</label>
+    <input type="date" name="occurred_on">
+  </p>
+  <button>Submit</button>
+</form>
